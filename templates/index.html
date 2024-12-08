@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+    {% for post in posts %}
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Назва статті: {{ post.title }}</h5>
+                    <p>Автор: <em>{{ post.author.name }}</em></p>
+                </div>
+                <div>
+                    <a href="{{ url_for('get_post', id=post.id) }}" class="btn btn-primary">Відкрити статтю</a>
+                    <a href="{{ url_for('edit_post', id=post.id) }}" class="btn btn-info">Редагувати статтю</a>
+                    <a href="{{ url_for('delete_post', id=post.id) }}" class="btn btn-danger">Видалити статтю</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+{% endblock content %}
